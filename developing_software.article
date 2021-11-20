@@ -1,0 +1,15 @@
+# Maintaining a comfortable temperature
+
+Loh Siu Yin
+siuyin@xendit.co
+
+## Requirements
+.code maintain_comfort_temp.feature
+
+## Main function
+cmd/draft3/main.go:
+
+.code cmd/draft3/main.go /func main\(/,/^}/
+
+.code cmd/draft3/main.go /func sensor\(/,/^}/
+.code cmd/draft3/main.go /func actuator\(/,/^}/

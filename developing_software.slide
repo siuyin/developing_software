@@ -1,0 +1,98 @@
+# Developing Software
+Refactor,Test and Document with Go
+20 Nov 2021
+
+Loh Siu Yin
+Engineering Manager, Xendit
+siuyin@xendit.co
+
+
+## Begin with Requirements
+I use Gherkin: https://cucumber.io/docs/gherkin/reference/
+
+.code maintain_comfort_temp.feature
+
+## First draft
+.code cmd/draft/main.go
+
+---
+
+```
+go run cmd/draft/main.go
+```
+
+## Draft 2
+Refactor to sensor and actuator.
+
+.code cmd/draft2/main.go /func main\(/,/^}/
+
+The `select {}` is a wait forever as sense and actuate are goroutines.
+Think of them as services that run forever.
+
+Note the change from nouns (sensor) to verbs (sense).
+
+## sense goroutine
+
+.code cmd/draft2/main.go /func sense\(/,/^}/
+
+Notice the blank lines bracketing the primary code.  
+Use whitespace to highlight important sections of code.
+
+## actuate goroutine
+
+.code cmd/draft2/main.go /func actuate\(/,/^}/
+
+## Refactor, Test, Document
+
+In Test Driven Development (TDD), we write the tests first ...
+
+I was too keen and refactored my code first..  
+Let's still write the tests.
+
+.code cmd/draft3/main_test.go /for n, d := range dat/,/^\t}/
+.code cmd/draft3/main_test.go /dat := \[\]struct/,/^\t}$/
+
+## actuate now receives an integer for input...
+.code cmd/draft3/main.go /const \(/,/^\)/
+.code cmd/draft3/main.go /func actuate\(/,/^}/
+
+## actuator is the object that actuates
+.code cmd/draft3/main.go /func actuator\(/,/^}/
+
+## sensor is the object that senses
+.code cmd/draft3/main.go /func sensor\(/,/^}/
+.code cmd/draft3/main.go /func sense\(/,/^}/
+
+## main function
+.code cmd/draft3/main.go /func main\(/,/^}/
+
+Organising / Architecting software is like organising a team.  
+Each team has a name (noun).  
+And each team is responsible for doing something (verb).
+
+---
+
+```
+cd cmd/draft3
+go test
+
+go run main.go 
+```
+
+## Document
+
+Software, like organisations, have things that change frequently
+and things that are stable.
+
+Document stable things in README.md.
+
+Document unstable things in a code walk-through.
+
+## README.md
+.code README.md
+
+## Code walk-through
+.link developing_software.article
+
+## Presentation and Code sources
+
