@@ -42,6 +42,11 @@ Use whitespace to highlight important sections of code.
 
 .code cmd/draft2/main.go /func actuate\(/,/^}/
 
+
+```
+go run cmd/draft2/main.go
+```
+
 ## Refactor, Test, Document
 
 In Test Driven Development (TDD), we write the tests first ...
@@ -52,13 +57,26 @@ Let's still write the tests.
 .code cmd/draft3/main_test.go /for n, d := range dat/,/^\t}/
 .code cmd/draft3/main_test.go /dat := \[\]struct/,/^\t}$/
 
-Comment on Go Enumerations and Stringer.
+## Type Safety
+.play -edit cmd/type/main.go
+
+Will this run?
+
+## Enumerations and Stringer
+.code cmd/enum/main.go
+
+```
+go install golang.org/x/tools/cmd/stringer@latest
+
+cd cmd/enum; ls
+go generate
+go run *.go
+```
 
 ## actuate now receives an integer for input...
 .code cmd/draft3/main.go /const \(/,/^\)/
 .code cmd/draft3/main.go /func actuate\(/,/^}/
 
-Comment on type safety..
 
 ## actuator is the object that actuates
 .code cmd/draft3/main.go /func actuator\(/,/^}/
