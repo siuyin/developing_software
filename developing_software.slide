@@ -57,13 +57,17 @@ Let's still write the tests.
 .code cmd/draft3/main_test.go /for n, d := range dat/,/^\t}/
 .code cmd/draft3/main_test.go /dat := \[\]struct/,/^\t}$/
 
-## Type Safety
+## actuate now receives an integer for input...
+.code cmd/draft3/main.go /const \(/,/^\)/
+.code cmd/draft3/main.go /func actuate\(/,/^}/
+
+## Type Safety: A short detour..
 .play -edit cmd/type/main.go
 
 Will this run?
 
 ## Enumerations and Stringer
-.code cmd/enum/main.go
+.play cmd/enum/main.go
 
 ```
 go install golang.org/x/tools/cmd/stringer@latest
@@ -73,7 +77,7 @@ go generate
 go run *.go
 ```
 
-## actuate now receives an integer for input...
+## Back to main path: actuate now receives an integer for input...
 .code cmd/draft3/main.go /const \(/,/^\)/
 .code cmd/draft3/main.go /func actuate\(/,/^}/
 

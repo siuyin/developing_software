@@ -5,8 +5,8 @@ import "fmt"
 type Temperature int
 
 const (
-	lowTemp  = Temperature(25)
-	highTemp = Temperature(30)
+	lowTemp  Temperature = 25
+	highTemp             = Temperature(30)
 )
 
 func pTemp(t Temperature) {
